@@ -30,7 +30,6 @@ jobs:
             gradle-builds
       - name: Build debug apk with Gradle
         run: |
-          cd project
           [ $(du -s ~/.gradle/wrapper | awk '{ print $1 }') -gt 250000 ] && rm -rf ~/.gradle/wrapper/* || true
           find ~/.gradle/caches -exec touch -d "2 days ago" {} + || true
           echo 'org.gradle.caching=true' >> gradle.properties
