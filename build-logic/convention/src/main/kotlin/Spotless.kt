@@ -57,6 +57,9 @@ fun SpotlessExtension.kotlin(
 ) = kotlin {
     target(targets)
     targetExclude(excludeTargets)
+    indentWithSpaces()
+    trimTrailingWhitespace()
+    endWithNewline()
     ktlint(ktLintVersion)
         .editorConfigOverride(editorConfig)
     licenseHeaderFile?.let(::licenseHeaderFile)?.apply(licenseHeaderConfig)
@@ -77,6 +80,9 @@ fun SpotlessExtension.kotlinGradle(
     overrideExcludeTargets
         .ifEmpty { defaultExcludeTargetsForKotlinGradle + additionalExcludeTargets }
         .let { targetExclude(it) }
+    indentWithSpaces()
+    trimTrailingWhitespace()
+    endWithNewline()
     ktlint(ktLintVersion)
         .editorConfigOverride(editorConfig)
 }
@@ -89,6 +95,36 @@ fun SpotlessExtension.protobuf(
         clangFormat(clangFormatVersion).style(style)
     },
 ) = format("protobuf", block)
+
+fun SpotlessExtension.copyrightForKts(
+    targets: List<String> = listOf("**/*.kts"),
+    excludeTargets: Set<String> = setOf(),
+    licenseHeaderFile: File? = null,
+    licenseHeaderDelimiter: String = "(^(?![\\/ ]\\*).*\$)",
+    licenseHeaderConfig: FormatExtension.LicenseHeaderConfig.() -> Unit = {}
+) {
+    format("kts") {
+        target(targets)
+        targetExclude(excludeTargets)
+        licenseHeaderFile?.let { licenseHeaderFile(it, licenseHeaderDelimiter) }
+            ?.apply(licenseHeaderConfig)
+    }
+}
+
+fun SpotlessExtension.copyrightForXml(
+    targets: List<String> = listOf("**/*.xml"),
+    excludeTargets: Set<String> = setOf(),
+    licenseHeaderFile: File? = null,
+    licenseHeaderDelimiter: String = "(<[^!?])",
+    licenseHeaderConfig: FormatExtension.LicenseHeaderConfig.() -> Unit = {}
+) {
+    format("xml") {
+        target(targets)
+        targetExclude(excludeTargets)
+        licenseHeaderFile?.let { licenseHeaderFile(it, licenseHeaderDelimiter) }
+            ?.apply(licenseHeaderConfig)
+    }
+}
 
 val defaultEditorConfig: Map<String, String> = mapOf(
     "ij_kotlin_allow_trailing_comma" to "true",
