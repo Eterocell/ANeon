@@ -22,6 +22,7 @@
 import com.eterocell.gradle.dsl.configureAndroidCommon
 
 configureAndroidCommon {
+    defaultConfig.vectorDrawables { useSupportLibrary = true }
     buildFeatures {
         compose = true
     }

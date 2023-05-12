@@ -27,15 +27,7 @@ plugins {
 android {
 
     defaultConfig {
-        applicationId = "com.eterocell.aneon"
-        versionCode = extra["aneon.project.version.code"].toString().toInt()
-        versionName = extra["aneon.project.version.name"] as String
-        versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
     }
 
     buildTypes {
@@ -46,9 +38,6 @@ android {
                 "proguard-rules.pro",
             )
         }
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
     }
     packaging {
         resources {
