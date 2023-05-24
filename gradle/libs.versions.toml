@@ -9,7 +9,7 @@ espresso-core = "3.5.1"
 lifecycle-runtime-ktx = "2.6.1"
 activity-compose = "1.7.1"
 compose-bom = "2023.05.01"
-spotless = "6.18.0"
+spotless = "6.19.0"
 
 [libraries]
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
