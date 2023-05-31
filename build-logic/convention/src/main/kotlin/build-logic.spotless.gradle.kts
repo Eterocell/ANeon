@@ -38,7 +38,11 @@ allprojects {
         )
 
         copyrightForXml(
-            excludeTargets = setOf("**/build/**/*.xml", "**/spotless/copyright.xml"),
+            excludeTargets = setOf(
+                "**/build/**/*.xml",
+                "**/spotless/copyright.xml",
+                "**/.idea/**/*.xml",
+            ),
             licenseHeaderFile = rootProject.file("spotless/copyright.xml").takeIf(File::exists),
             licenseHeaderConfig = {
                 updateYearWithLatest(true)

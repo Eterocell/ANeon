@@ -19,18 +19,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import com.eterocell.gradle.dsl.configureAndroidLibrary
+import com.eterocell.gradle.dsl.configureAndroidCommon
 
-plugins {
-    id("com.android.library")
-    id("build-logic.android.base")
-}
+configureAndroidCommon {
+    ndkVersion = "25.2.9519653"
 
-configureAndroidLibrary {
-    defaultConfig {
-        targetSdk = 33
+    defaultConfig.externalNativeBuild {
+        cmake {
+            cFlags += ""
+            cppFlags += ""
+            abiFilters("arm64-v8a", "armeabi-v7a", "x86", "x86_64")
+        }
     }
-    buildFeatures {
-        buildConfig = false
+    externalNativeBuild {
+        cmake {
+            path = file("$projectDir/src/main/cpp/CMakeLists.txt")
+            version = "3.22.1"
+        }
     }
 }
