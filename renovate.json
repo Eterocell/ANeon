@@ -1,14 +1,22 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "baseBranches": [
-    "main"
-  ],
-
-  "automerge": true,
-  "automergeType": "pr",
-  "automergeStrategy": "squash",
-
-  "extends": [
-    "config:base"
-  ]
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "baseBranches": [
+        "main"
+    ],
+    "automerge": true,
+    "automergeType": "pr",
+    "automergeStrategy": "squash",
+    "extends": [
+        "config:base"
+    ],
+    "packageRules": [
+        {
+            "matchPackagePatterns": [
+                "^org.jetbrains.kotlin",
+                "^com.google.devtools.ksp",
+                "^androidx.compose.compiler"
+            ],
+            "groupName": "kotlin"
+        }
+    ]
 }
