@@ -28,7 +28,7 @@ plugins {
 
 configureAndroidLibrary {
     defaultConfig {
-        targetSdk = 33
+        targetSdk = 34
     }
     buildFeatures {
         buildConfig = false
