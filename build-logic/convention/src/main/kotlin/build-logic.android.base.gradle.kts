@@ -31,7 +31,7 @@ configureAndroidCommon {
     compileSdk = 34
     buildToolsVersion = "34.0.0"
     defaultConfig {
-        minSdk = 29
+        minSdk = 21
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
