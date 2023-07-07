@@ -16,7 +16,7 @@
                 "^com.google.devtools.ksp",
                 "^androidx.compose.compiler"
             ],
-            "groupName": "kotlin"
+            "groupName": "kotlin version constraint (ksp, compose compiler)"
         }
     ]
 }
