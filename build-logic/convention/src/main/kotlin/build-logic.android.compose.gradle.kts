@@ -30,6 +30,6 @@ configureAndroidCommon {
         // TODO: Switch back to stable once it's out
 //        kotlinCompilerExtensionVersion =
 //            libs().findVersion("compose-compiler").get().requiredVersion
-        kotlinCompilerExtensionVersion = "1.5.0-dev-k1.9.0-6a60475e07f"
+        kotlinCompilerExtensionVersion = "1.5.0"
     }
 }
