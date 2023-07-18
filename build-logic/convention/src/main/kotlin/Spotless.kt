@@ -51,17 +51,20 @@ fun SpotlessExtension.kotlin(
     targets: List<String> = listOf("src/**/*.kt"),
     excludeTargets: List<String> = listOf(),
     ktLintVersion: String = KtLintStep.defaultVersion(),
-    editorConfig: Map<String, String> = defaultEditorConfig,
     licenseHeaderFile: File? = null,
     licenseHeaderConfig: FormatExtension.LicenseHeaderConfig.() -> Unit = {},
+    userData: Map<String, String> = mapOf("android" to "true"),
+    editorConfigPath: String,
+    editorConfigOverride: Map<String, String> = mapOf(),
 ) = kotlin {
     target(targets)
     targetExclude(excludeTargets)
     indentWithSpaces()
     trimTrailingWhitespace()
     endWithNewline()
-    ktlint(ktLintVersion)
-        .editorConfigOverride(editorConfig)
+    ktlint(ktLintVersion).userData(userData)
+        .setEditorConfigPath(editorConfigPath.takeIf { File(it).exists() })
+        .editorConfigOverride(editorConfigOverride)
     licenseHeaderFile?.let(::licenseHeaderFile)?.apply(licenseHeaderConfig)
 }
 
@@ -74,17 +77,19 @@ fun SpotlessExtension.kotlinGradle(
     overrideExcludeTargets: Set<String> = setOf(),
     additionalExcludeTargets: Set<String> = setOf(),
     ktLintVersion: String = KtLintStep.defaultVersion(),
-    editorConfig: Map<String, String> = defaultEditorConfig,
+    userData: Map<String, String> = mapOf(),
+    editorConfigPath: String,
+    editorConfigOverride: Map<String, String> = mapOf(),
 ) = kotlinGradle {
     target(targets)
-    overrideExcludeTargets
-        .ifEmpty { defaultExcludeTargetsForKotlinGradle + additionalExcludeTargets }
+    overrideExcludeTargets.ifEmpty { defaultExcludeTargetsForKotlinGradle + additionalExcludeTargets }
         .let { targetExclude(it) }
     indentWithSpaces()
     trimTrailingWhitespace()
     endWithNewline()
-    ktlint(ktLintVersion)
-        .editorConfigOverride(editorConfig)
+    ktlint(ktLintVersion).userData(userData)
+        .setEditorConfigPath(editorConfigPath.takeIf { File(it).exists() })
+        .editorConfigOverride(editorConfigOverride)
 }
 
 fun SpotlessExtension.protobuf(
@@ -101,7 +106,7 @@ fun SpotlessExtension.copyrightForKts(
     excludeTargets: Set<String> = setOf(),
     licenseHeaderFile: File? = null,
     licenseHeaderDelimiter: String = "(^(?![\\/ ]\\*).*\$)",
-    licenseHeaderConfig: FormatExtension.LicenseHeaderConfig.() -> Unit = {}
+    licenseHeaderConfig: FormatExtension.LicenseHeaderConfig.() -> Unit = {},
 ) {
     format("kts") {
         target(targets)
@@ -116,7 +121,7 @@ fun SpotlessExtension.copyrightForXml(
     excludeTargets: Set<String> = setOf(),
     licenseHeaderFile: File? = null,
     licenseHeaderDelimiter: String = "(<[^!?])",
-    licenseHeaderConfig: FormatExtension.LicenseHeaderConfig.() -> Unit = {}
+    licenseHeaderConfig: FormatExtension.LicenseHeaderConfig.() -> Unit = {},
 ) {
     format("xml") {
         target(targets)
@@ -125,10 +130,3 @@ fun SpotlessExtension.copyrightForXml(
             ?.apply(licenseHeaderConfig)
     }
 }
-
-val defaultEditorConfig: Map<String, String> = mapOf(
-    "ij_kotlin_allow_trailing_comma" to "true",
-    "ij_kotlin_allow_trailing_comma_on_call_site" to "true",
-    "ktlint_standard_argument-list-wrapping" to "disabled",
-    "ktlint_standard_filename" to "disabled",
-)

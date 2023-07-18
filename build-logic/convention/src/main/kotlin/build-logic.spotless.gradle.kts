@@ -24,7 +24,7 @@ plugins {
     id("com.diffplug.spotless")
 }
 
-val ktlintVersion = "0.47.1"
+val ktlintVersion = "0.50.0"
 
 allprojects {
     configureSpotless {
@@ -55,12 +55,11 @@ allprojects {
         gradleVersionCatalogs()
 
         kotlin(
-            editorConfig = mapOf(
-                "ktlint_disabled_rules" to listOf(
-                    "argument-list-wrapping",
-                    "filename",
-                    "no-wildcard-imports",
-                ).joinToString(","),
+            editorConfigPath = "${rootProject.rootDir}/.editorconfig",
+            editorConfigOverride = mapOf(
+                "ktlint_standard_argument-list-wrapping" to "disabled",
+                "ktlint_standard_filename" to "disabled",
+                "ktlint_standard_no-wildcard-imports" to "disabled",
                 "ij_kotlin_allow_trailing_comma" to "true",
                 "ij_kotlin_allow_trailing_comma_on_call_site" to "true",
                 "ktlint_standard_argument-list-wrapping" to "disabled",
@@ -74,6 +73,18 @@ allprojects {
             },
             ktLintVersion = ktlintVersion,
         )
-        kotlinGradle(ktLintVersion = ktlintVersion)
+        kotlinGradle(
+            editorConfigPath = "${rootProject.rootDir}/.editorconfig",
+            editorConfigOverride = mapOf(
+                "ktlint_standard_argument-list-wrapping" to "disabled",
+                "ktlint_standard_filename" to "disabled",
+                "ktlint_standard_no-wildcard-imports" to "disabled",
+                "ij_kotlin_allow_trailing_comma" to "true",
+                "ij_kotlin_allow_trailing_comma_on_call_site" to "true",
+                "ktlint_standard_argument-list-wrapping" to "disabled",
+                "ktlint_standard_filename" to "disabled",
+            ),
+            ktLintVersion = ktlintVersion,
+        )
     }
 }
