@@ -27,9 +27,7 @@ configureAndroidCommon {
         compose = true
     }
     composeOptions {
-        // TODO: Switch back to stable once it's out
-//        kotlinCompilerExtensionVersion =
-//            libs().findVersion("compose-compiler").get().requiredVersion
-        kotlinCompilerExtensionVersion = "1.5.0"
+        kotlinCompilerExtensionVersion =
+            libs().findVersion("compose-compiler").get().requiredVersion
     }
 }
