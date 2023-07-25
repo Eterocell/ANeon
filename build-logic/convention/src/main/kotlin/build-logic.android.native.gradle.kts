@@ -26,8 +26,9 @@ configureAndroidCommon {
 
     defaultConfig.externalNativeBuild {
         cmake {
-            cFlags += ""
-            cppFlags += ""
+            arguments += "-DANDROID_STL=c++_shared"
+            cFlags += "-std=c18"
+            cppFlags += "-std=c++20"
             abiFilters("arm64-v8a", "armeabi-v7a", "x86", "x86_64")
         }
     }
