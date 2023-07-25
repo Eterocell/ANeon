@@ -4,30 +4,33 @@ plugins {
 }
 
 val ktlintVersion = "0.50.0"
+val genCopyright = false
 
 allprojects {
     configureSpotless {
-        copyrightForKts(
-            excludeTargets = setOf("**/build/**/*.kts", "**/spotless/copyright.kts"),
-            licenseHeaderFile = rootProject.file("spotless/copyright.kt").takeIf(File::exists),
-            licenseHeaderConfig = {
-                updateYearWithLatest(true)
-                yearSeparator("-")
-            },
-        )
+        if (genCopyright) {
+            copyrightForKts(
+                excludeTargets = setOf("**/build/**/*.kts", "**/spotless/copyright.kts"),
+                licenseHeaderFile = rootProject.file("spotless/copyright.kt").takeIf(File::exists),
+                licenseHeaderConfig = {
+                    updateYearWithLatest(true)
+                    yearSeparator("-")
+                },
+            )
 
-        copyrightForXml(
-            excludeTargets = setOf(
-                "**/build/**/*.xml",
-                "**/spotless/copyright.xml",
-                "**/.idea/**/*.xml",
-            ),
-            licenseHeaderFile = rootProject.file("spotless/copyright.xml").takeIf(File::exists),
-            licenseHeaderConfig = {
-                updateYearWithLatest(true)
-                yearSeparator("-")
-            },
-        )
+            copyrightForXml(
+                excludeTargets = setOf(
+                    "**/build/**/*.xml",
+                    "**/spotless/copyright.xml",
+                    "**/.idea/**/*.xml",
+                ),
+                licenseHeaderFile = rootProject.file("spotless/copyright.xml").takeIf(File::exists),
+                licenseHeaderConfig = {
+                    updateYearWithLatest(true)
+                    yearSeparator("-")
+                },
+            )
+        }
 
         androidXml()
         intelliJIDEARunConfiguration()
@@ -44,7 +47,11 @@ allprojects {
                 "ktlint_standard_argument-list-wrapping" to "disabled",
                 "ktlint_standard_filename" to "disabled",
             ),
-            licenseHeaderFile = rootProject.file("spotless/copyright.kt").takeIf(File::exists),
+            licenseHeaderFile = if (genCopyright) {
+                rootProject.file("spotless/copyright.kt").takeIf(File::exists)
+            } else {
+                null
+            },
             excludeTargets = listOf("**/spotless/copyright.kt", "*.kts"),
             licenseHeaderConfig = {
                 updateYearWithLatest(true)
