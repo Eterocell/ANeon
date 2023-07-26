@@ -46,6 +46,7 @@ dependencies {
     implementation(libs.arrow.core)
     implementation(libs.arrow.fx.coroutines)
     implementation(libs.arrow.optics)
+    ksp(platform(libs.arrow.bom))
     ksp(libs.arrow.optics.ksp)
 
     testImplementation(libs.junit)
