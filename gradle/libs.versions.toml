@@ -37,8 +37,17 @@ ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 material3 = { group = "androidx.compose.material3", name = "material3" }
 
 arrow-bom = { module = "io.arrow-kt:arrow-stack", version.ref = "arrow" }
+arrow-annotations = { module = "io.arrow-kt:arrow-annotations" }
+arrow-atomic = { module = "io.arrow-kt:arrow-atomic" }
+arrow-continuation = { module = "io.arrow-kt:arrow-continuation" }
 arrow-core = { module = "io.arrow-kt:arrow-core" }
+arrow-core-retrofit = { module = "io.arrow-kt:arrow-core-retrofit" }
 arrow-fx-coroutines = { module = "io.arrow-kt:arrow-fx-coroutines" }
+arrow-fx-stm = { module = "io.arrow-kt:arrow-fx-stm" }
+arrow-resilience = { module = "io.arrow-kt:arrow-resilience" }
+arrow-optics = { module = "io.arrow-kt:arrow-optics" }
+arrow-optics-reflect = { module = "io.arrow-kt:arrow-optics-reflect" }
+arrow-optics-ksp = { module = "io.arrow-kt:arrow-optics-ksp-plugin" }
 
 # Testing
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -51,9 +60,10 @@ gradle-plugin-kotlin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-p
 gradle-plugin-ksp = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 
 [plugins]
-com-android-application = { id = "com.android.application", version.ref = "agp" }
-com-android-library = { id = "com.android.library", version.ref = "agp" }
-com-diffplug-spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
-org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
 [bundles]

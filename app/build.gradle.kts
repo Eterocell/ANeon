@@ -1,6 +1,8 @@
 plugins {
     id("build-logic.android.application")
     id("build-logic.android.compose")
+
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -43,6 +45,8 @@ dependencies {
     implementation(platform(libs.arrow.bom))
     implementation(libs.arrow.core)
     implementation(libs.arrow.fx.coroutines)
+    implementation(libs.arrow.optics)
+    ksp(libs.arrow.optics.ksp)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
