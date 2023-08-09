@@ -30,6 +30,7 @@ android {
 dependencies {
 
     implementation(libs.kotlin.stdlib)
+    implementation(libs.kotlinx.coroutines.android)
 
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
