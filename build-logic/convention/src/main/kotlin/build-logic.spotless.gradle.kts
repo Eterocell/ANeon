@@ -3,7 +3,7 @@ plugins {
     id("com.diffplug.spotless")
 }
 
-val ktlintVersion = "1.0.0"
+val ktlintVersion = "1.0.1"
 val genCopyright = false
 
 allprojects {
@@ -42,8 +42,7 @@ allprojects {
                 "ktlint_standard_argument-list-wrapping" to "disabled",
                 "ktlint_standard_filename" to "disabled",
                 "ktlint_standard_no-wildcard-imports" to "disabled",
-                // For Composable functions
-                "ktlint_standard_function-naming" to "disabled",
+                "ktlint_function_naming_ignore_when_annotated_with" to "Composable",
                 "ij_kotlin_allow_trailing_comma" to "true",
                 "ij_kotlin_allow_trailing_comma_on_call_site" to "true",
                 "ktlint_standard_argument-list-wrapping" to "disabled",
