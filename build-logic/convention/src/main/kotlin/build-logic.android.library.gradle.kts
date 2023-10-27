@@ -6,9 +6,6 @@ plugins {
 }
 
 configureAndroidLibrary {
-    defaultConfig {
-        targetSdk = 34
-    }
     buildFeatures {
         buildConfig = false
     }
