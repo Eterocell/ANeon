@@ -5,6 +5,7 @@ import com.diffplug.spotless.kotlin.KtLintStep
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.withGroovyBuilder
 import java.io.File
 
 fun Project.configureSpotless(block: SpotlessExtension.() -> Unit) {
@@ -53,7 +54,6 @@ fun SpotlessExtension.kotlin(
     ktLintVersion: String = KtLintStep.defaultVersion(),
     licenseHeaderFile: File? = null,
     licenseHeaderConfig: FormatExtension.LicenseHeaderConfig.() -> Unit = {},
-    userData: Map<String, String> = mapOf("android" to "true"),
     editorConfigPath: String,
     editorConfigOverride: Map<String, String> = mapOf(),
 ) = kotlin {
@@ -62,9 +62,12 @@ fun SpotlessExtension.kotlin(
     indentWithSpaces()
     trimTrailingWhitespace()
     endWithNewline()
-    ktlint(ktLintVersion).userData(userData)
-        .setEditorConfigPath(editorConfigPath.takeIf { File(it).exists() })
-        .editorConfigOverride(editorConfigOverride)
+    // Waiting for spotless-gradle-plugin 6.23.2 to be published on MavenCentral
+    // https://github.com/diffplug/spotless/pull/1890#issuecomment-1827263031
+    @Suppress("INACCESSIBLE_TYPE") ktlint(ktLintVersion).withGroovyBuilder {
+        "setEditorConfigPath"(editorConfigPath.takeIf { File(it).exists() })
+        "editorConfigOverride"(editorConfigOverride)
+    }
     licenseHeaderFile?.let(::licenseHeaderFile)?.apply(licenseHeaderConfig)
 }
 
@@ -77,19 +80,24 @@ fun SpotlessExtension.kotlinGradle(
     overrideExcludeTargets: Set<String> = setOf(),
     additionalExcludeTargets: Set<String> = setOf(),
     ktLintVersion: String = KtLintStep.defaultVersion(),
-    userData: Map<String, String> = mapOf(),
     editorConfigPath: String,
     editorConfigOverride: Map<String, String> = mapOf(),
 ) = kotlinGradle {
     target(targets)
-    overrideExcludeTargets.ifEmpty { defaultExcludeTargetsForKotlinGradle + additionalExcludeTargets }
-        .let { targetExclude(it) }
+    targetExclude(
+        overrideExcludeTargets.ifEmpty {
+            defaultExcludeTargetsForKotlinGradle + additionalExcludeTargets
+        },
+    )
     indentWithSpaces()
     trimTrailingWhitespace()
     endWithNewline()
-    ktlint(ktLintVersion).userData(userData)
-        .setEditorConfigPath(editorConfigPath.takeIf { File(it).exists() })
-        .editorConfigOverride(editorConfigOverride)
+    // Waiting for spotless-gradle-plugin 6.23.2 to be published on MavenCentral
+    // https://github.com/diffplug/spotless/pull/1890#issuecomment-1827263031
+    @Suppress("INACCESSIBLE_TYPE") ktlint(ktLintVersion).withGroovyBuilder {
+        "setEditorConfigPath"(editorConfigPath.takeIf { File(it).exists() })
+        "editorConfigOverride"(editorConfigOverride)
+    }
 }
 
 fun SpotlessExtension.protobuf(
