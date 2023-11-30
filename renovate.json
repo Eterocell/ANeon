@@ -16,7 +16,7 @@
                 "^com.google.devtools.ksp",
                 "^androidx.compose.compiler"
             ],
-            "groupName": "kotlin with dependencies' constraints (ksp, compose compiler)"
+            "groupName": "kotlin with dependency constraints (ksp, compose compiler)"
         }
     ]
 }
