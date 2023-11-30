@@ -1,15 +1,15 @@
 [versions]
 agp = "8.1.4"
-kotlin = "1.9.20"
+kotlin = "1.9.21"
 kotlinx-coroutines = "1.7.3"
-ksp = "1.9.20-1.0.14"
+ksp = "1.9.21-1.0.15"
 
 # Jetpack
 core-ktx = "1.12.0"
 lifecycle-runtime-ktx = "2.6.2"
 activity-compose = "1.8.1"
 compose-bom = "2023.10.01"
-compose-compiler = "1.5.5"
+compose-compiler = "1.5.5-dev-k1.9.21-163bb051fe5"
 
 # Testing
 junit = "4.13.2"
