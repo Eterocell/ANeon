@@ -22,9 +22,14 @@ jobs:
           distribution: liberica
           cache: 'gradle'
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v2.10.0
         with:
           gradle-home-cache-cleanup: true
+      - name: Validate Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v1
+        with:
+          min-wrapper-count: 2
+          allow-snapshots: false
       - name: Spotless check
         run: ./gradlew spotlessCheck
       - name: Build debug apk with Gradle
