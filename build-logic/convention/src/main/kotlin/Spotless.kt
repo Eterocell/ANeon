@@ -55,13 +55,14 @@ fun SpotlessExtension.kotlin(
     licenseHeaderConfig: FormatExtension.LicenseHeaderConfig.() -> Unit = {},
     editorConfigPath: String,
     editorConfigOverride: Map<String, String> = mapOf(),
+    customKtlintRuleSets: List<String> = listOf(),
 ) = kotlin {
     target(targets)
     targetExclude(excludeTargets)
     indentWithSpaces()
     trimTrailingWhitespace()
     endWithNewline()
-    ktlint(ktlintVersion)
+    ktlint(ktlintVersion).customRuleSets(customKtlintRuleSets)
         .setEditorConfigPath(editorConfigPath.takeIf { File(it).exists() })
         .editorConfigOverride(editorConfigOverride)
     licenseHeaderFile?.let(::licenseHeaderFile)?.apply(licenseHeaderConfig)
@@ -78,6 +79,7 @@ fun SpotlessExtension.kotlinGradle(
     ktlintVersion: String = KtLintStep.defaultVersion(),
     editorConfigPath: String,
     editorConfigOverride: Map<String, String> = mapOf(),
+    customKtlintRuleSets: List<String> = listOf(),
 ) = kotlinGradle {
     target(targets)
     targetExclude(
@@ -88,7 +90,7 @@ fun SpotlessExtension.kotlinGradle(
     indentWithSpaces()
     trimTrailingWhitespace()
     endWithNewline()
-    ktlint(ktlintVersion)
+    ktlint(ktlintVersion).customRuleSets(customKtlintRuleSets)
         .setEditorConfigPath(editorConfigPath.takeIf { File(it).exists() })
         .editorConfigOverride(editorConfigOverride)
 }
