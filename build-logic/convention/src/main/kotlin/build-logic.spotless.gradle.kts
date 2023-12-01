@@ -58,7 +58,7 @@ allprojects {
                 updateYearWithLatest(true)
                 yearSeparator("-")
             },
-            ktLintVersion = ktlintVersion,
+            ktlintVersion = ktlintVersion,
         )
         kotlinGradle(
             editorConfigPath = "${rootProject.rootDir}/.editorconfig",
@@ -71,7 +71,7 @@ allprojects {
                 "ktlint_standard_argument-list-wrapping" to "disabled",
                 "ktlint_standard_filename" to "disabled",
             ),
-            ktLintVersion = ktlintVersion,
+            ktlintVersion = ktlintVersion,
         )
     }
 }

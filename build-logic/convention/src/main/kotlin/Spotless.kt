@@ -51,7 +51,7 @@ fun SpotlessExtension.intelliJIDEARunConfiguration(
 fun SpotlessExtension.kotlin(
     targets: List<String> = listOf("src/**/*.kt"),
     excludeTargets: List<String> = listOf(),
-    ktLintVersion: String = KtLintStep.defaultVersion(),
+    ktlintVersion: String = KtLintStep.defaultVersion(),
     licenseHeaderFile: File? = null,
     licenseHeaderConfig: FormatExtension.LicenseHeaderConfig.() -> Unit = {},
     editorConfigPath: String,
@@ -64,7 +64,7 @@ fun SpotlessExtension.kotlin(
     endWithNewline()
     // Waiting for spotless-gradle-plugin 6.23.2 to be published on MavenCentral
     // https://github.com/diffplug/spotless/pull/1890#issuecomment-1827263031
-    @Suppress("INACCESSIBLE_TYPE") ktlint(ktLintVersion).withGroovyBuilder {
+    @Suppress("INACCESSIBLE_TYPE") ktlint(ktlintVersion).withGroovyBuilder {
         "setEditorConfigPath"(editorConfigPath.takeIf { File(it).exists() })
         "editorConfigOverride"(editorConfigOverride)
     }
@@ -79,7 +79,7 @@ fun SpotlessExtension.kotlinGradle(
     targets: List<String> = listOf("**/*.gradle.kts"),
     overrideExcludeTargets: Set<String> = setOf(),
     additionalExcludeTargets: Set<String> = setOf(),
-    ktLintVersion: String = KtLintStep.defaultVersion(),
+    ktlintVersion: String = KtLintStep.defaultVersion(),
     editorConfigPath: String,
     editorConfigOverride: Map<String, String> = mapOf(),
 ) = kotlinGradle {
@@ -94,7 +94,7 @@ fun SpotlessExtension.kotlinGradle(
     endWithNewline()
     // Waiting for spotless-gradle-plugin 6.23.2 to be published on MavenCentral
     // https://github.com/diffplug/spotless/pull/1890#issuecomment-1827263031
-    @Suppress("INACCESSIBLE_TYPE") ktlint(ktLintVersion).withGroovyBuilder {
+    @Suppress("INACCESSIBLE_TYPE") ktlint(ktlintVersion).withGroovyBuilder {
         "setEditorConfigPath"(editorConfigPath.takeIf { File(it).exists() })
         "editorConfigOverride"(editorConfigOverride)
     }
