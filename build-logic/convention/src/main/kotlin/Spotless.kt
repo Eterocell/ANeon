@@ -5,7 +5,6 @@ import com.diffplug.spotless.kotlin.KtLintStep
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.withGroovyBuilder
 import java.io.File
 
 fun Project.configureSpotless(block: SpotlessExtension.() -> Unit) {
@@ -62,12 +61,9 @@ fun SpotlessExtension.kotlin(
     indentWithSpaces()
     trimTrailingWhitespace()
     endWithNewline()
-    // Waiting for spotless-gradle-plugin 6.23.2 to be published on MavenCentral
-    // https://github.com/diffplug/spotless/pull/1890#issuecomment-1827263031
-    @Suppress("INACCESSIBLE_TYPE") ktlint(ktlintVersion).withGroovyBuilder {
-        "setEditorConfigPath"(editorConfigPath.takeIf { File(it).exists() })
-        "editorConfigOverride"(editorConfigOverride)
-    }
+    ktlint(ktlintVersion)
+        .setEditorConfigPath(editorConfigPath.takeIf { File(it).exists() })
+        .editorConfigOverride(editorConfigOverride)
     licenseHeaderFile?.let(::licenseHeaderFile)?.apply(licenseHeaderConfig)
 }
 
@@ -92,12 +88,9 @@ fun SpotlessExtension.kotlinGradle(
     indentWithSpaces()
     trimTrailingWhitespace()
     endWithNewline()
-    // Waiting for spotless-gradle-plugin 6.23.2 to be published on MavenCentral
-    // https://github.com/diffplug/spotless/pull/1890#issuecomment-1827263031
-    @Suppress("INACCESSIBLE_TYPE") ktlint(ktlintVersion).withGroovyBuilder {
-        "setEditorConfigPath"(editorConfigPath.takeIf { File(it).exists() })
-        "editorConfigOverride"(editorConfigOverride)
-    }
+    ktlint(ktlintVersion)
+        .setEditorConfigPath(editorConfigPath.takeIf { File(it).exists() })
+        .editorConfigOverride(editorConfigOverride)
 }
 
 fun SpotlessExtension.protobuf(
