@@ -18,7 +18,7 @@ espresso-core = "3.5.1"
 
 arrow = "1.2.1"
 
-spotless = "6.23.3"
+spotless = "6.24.0"
 
 [libraries]
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
