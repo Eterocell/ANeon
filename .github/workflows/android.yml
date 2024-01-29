@@ -26,7 +26,7 @@ jobs:
         with:
           gradle-home-cache-cleanup: true
       - name: Validate Gradle Wrapper
-        uses: gradle/wrapper-validation-action@v1
+        uses: gradle/wrapper-validation-action@v2
         with:
           min-wrapper-count: 2
           allow-snapshots: false
