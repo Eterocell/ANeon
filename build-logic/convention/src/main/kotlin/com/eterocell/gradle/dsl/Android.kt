@@ -27,7 +27,7 @@ fun Project.withAndroid(block: Plugin<in Any>.() -> Unit) {
     withAndroidDynamicFeature(block)
 }
 
-fun Project.configureAndroidCommon(block: CommonExtension<*, *, *, *, *>.() -> Unit) =
+fun Project.configureAndroidCommon(block: CommonExtension<*, *, *, *, *, *>.() -> Unit) =
     withAndroid { configure("android", block) }
 
 fun Project.configureAndroidApplication(block: ApplicationExtension.() -> Unit) =
