@@ -51,6 +51,7 @@ fun ANeonTheme(
         }
 
         darkTheme -> DarkColorScheme
+
         else -> LightColorScheme
     }
     val view = LocalView.current
