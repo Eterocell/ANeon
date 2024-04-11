@@ -1,7 +1,7 @@
 import com.eterocell.gradle.dsl.configureAndroidCommon
 
 configureAndroidCommon {
-    ndkVersion = "26.2.11394342"
+    ndkVersion = "26.3.11579264"
 
     defaultConfig.externalNativeBuild {
         cmake {
