@@ -6,7 +6,7 @@ ksp = "1.9.24-1.0.20"
 
 # Jetpack
 core-ktx = "1.13.1"
-lifecycle-runtime-ktx = "2.7.0"
+lifecycle-runtime-ktx = "2.8.0"
 activity-compose = "1.9.0"
 compose-bom = "2024.05.00"
 compose-compiler = "1.5.14"
