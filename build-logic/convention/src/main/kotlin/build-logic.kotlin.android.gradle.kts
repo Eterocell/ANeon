@@ -1,18 +1,18 @@
 import com.eterocell.gradle.dsl.kotlinCompile
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     kotlin("android")
 }
 
 kotlinCompile {
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    compilerOptions {
+        jvmTarget = JvmTarget.JVM_1_8
 
         val warningsAsErrors: String? by project
         allWarningsAsErrors = warningsAsErrors.toBoolean()
-        freeCompilerArgs = freeCompilerArgs + listOf(
+        freeCompilerArgs = listOf(
             "-opt-in=kotlin.RequiresOptIn",
-            "-opt-in=kotlinx.coroutines.ExperimentalCoroutineApi",
             "-opt-in=kotlinx.coroutines.FlowPreview",
         )
     }

@@ -6,7 +6,6 @@ pluginManagement {
             content {
                 includeGroupByRegex("com.gradle.*")
                 includeGroupByRegex("org.gradle.*")
-                includeGroupByRegex("org.jetbrains.kotlin.*")
                 includeGroupByRegex("com.diffplug.spotless.*")
             }
         }
