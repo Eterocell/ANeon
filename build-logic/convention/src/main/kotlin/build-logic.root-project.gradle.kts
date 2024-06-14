@@ -4,6 +4,6 @@ plugins {
 }
 
 val wrapper: Wrapper by tasks.named<Wrapper>("wrapper") {
-    gradleVersion = "8.6"
+    gradleVersion = "8.8"
     distributionType = Wrapper.DistributionType.ALL
 }

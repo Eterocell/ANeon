@@ -9,7 +9,6 @@ core-ktx = "1.13.1"
 lifecycle-runtime-ktx = "2.8.2"
 activity-compose = "1.9.0"
 compose-bom = "2024.06.00"
-compose-compiler = "1.5.14"
 
 # Testing
 junit = "4.13.2"
