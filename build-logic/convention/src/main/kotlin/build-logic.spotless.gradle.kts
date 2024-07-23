@@ -1,3 +1,12 @@
+import com.eterocell.gradle.dsl.androidXml
+import com.eterocell.gradle.dsl.configureSpotless
+import com.eterocell.gradle.dsl.copyrightForKts
+import com.eterocell.gradle.dsl.copyrightForXml
+import com.eterocell.gradle.dsl.gradleVersionCatalogs
+import com.eterocell.gradle.dsl.intelliJIDEARunConfiguration
+import com.eterocell.gradle.dsl.kotlin
+import com.eterocell.gradle.dsl.kotlinGradle
+
 plugins {
     id("build-logic.root-project.base")
     id("com.diffplug.spotless")

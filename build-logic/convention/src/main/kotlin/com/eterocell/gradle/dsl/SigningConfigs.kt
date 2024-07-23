@@ -1,7 +1,6 @@
+package com.eterocell.gradle.dsl
+
 import com.android.build.api.dsl.ApplicationExtension
-import com.eterocell.gradle.dsl.configure
-import com.eterocell.gradle.dsl.localProperties
-import com.eterocell.gradle.dsl.withAndroidApplication
 import org.gradle.api.Project
 import java.io.File
 import java.util.Properties

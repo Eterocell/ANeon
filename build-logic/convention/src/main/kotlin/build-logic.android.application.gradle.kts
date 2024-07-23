@@ -1,4 +1,5 @@
 import com.eterocell.gradle.dsl.configureAndroidApplication
+import com.eterocell.gradle.dsl.configureAppSigningConfigsForRelease
 
 plugins {
     id("com.android.application")

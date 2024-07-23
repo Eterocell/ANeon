@@ -1,3 +1,5 @@
+package com.eterocell.gradle.dsl
+
 import com.diffplug.gradle.spotless.FormatExtension
 import com.diffplug.gradle.spotless.SpotlessExtension
 import com.diffplug.gradle.spotless.SpotlessPlugin
