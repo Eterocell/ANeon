@@ -7,7 +7,7 @@ configureAndroidCommon {
         cmake {
             arguments += listOf(
                 "-DANDROID_STL=c++_shared",
-                "-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON" // Support 16KB memory page size devices
+                "-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON", // Support 16KB memory page size devices
             )
             cFlags += "-std=c18"
             cppFlags += "-std=c++20"
