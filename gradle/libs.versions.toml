@@ -8,7 +8,7 @@ ksp = "2.0.21-1.0.25"
 core-ktx = "1.13.1"
 lifecycle-runtime-ktx = "2.8.6"
 activity-compose = "1.9.3"
-compose-bom = "2024.09.03"
+compose-bom = "2024.10.00"
 
 # Testing
 junit = "4.13.2"
