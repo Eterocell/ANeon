@@ -16,6 +16,11 @@ fun Project.configureAppSigningConfigsForRelease(
                 storePassword = properties["store.password"] as String
                 keyAlias = properties["key.alias"] as String
                 keyPassword = properties["key.password"] as String
+
+                enableV1Signing = true
+                enableV2Signing = true
+                enableV3Signing = true
+                enableV4Signing = true
             }
         }
         buildTypes {
@@ -31,7 +36,7 @@ fun Project.hasNullSigningConfigProperties(properties: Properties): Boolean {
         "store.file",
         "store.password",
         "key.alias",
-        "key.password"
+        "key.password",
     ).mapNotNull { if (properties[it] == null) it else null }
     val hasNullProperties = nullProperties.isNotEmpty()
     if (hasNullProperties) logger.warn(
