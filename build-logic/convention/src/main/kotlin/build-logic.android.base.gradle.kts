@@ -19,6 +19,8 @@ configureAndroidCommon {
 }
 
 val Project.androidNamespace
-    get() = path.replace(":", ".")
-        .let { if (it == ".app") "" else it.replace("-", ".") }
-        .let { extra["aneon.project.group"] as String + it }
+    get() =
+        path
+            .replace(":", ".")
+            .let { if (it == ".app") "" else it.replace("-", ".") }
+            .let { extra["aneon.project.group"] as String + it }

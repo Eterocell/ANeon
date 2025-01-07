@@ -11,9 +11,10 @@ kotlinCompile {
 
         val warningsAsErrors: String? by project
         allWarningsAsErrors = warningsAsErrors.toBoolean()
-        freeCompilerArgs = listOf(
-            "-opt-in=kotlin.RequiresOptIn",
-            "-opt-in=kotlinx.coroutines.FlowPreview",
-        )
+        freeCompilerArgs =
+            listOf(
+                "-opt-in=kotlin.RequiresOptIn",
+                "-opt-in=kotlinx.coroutines.FlowPreview",
+            )
     }
 }

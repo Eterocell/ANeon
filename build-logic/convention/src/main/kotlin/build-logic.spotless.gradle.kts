@@ -28,12 +28,16 @@ allprojects {
             )
 
             copyrightForXml(
-                excludeTargets = setOf(
-                    "**/build/**/*.xml",
-                    "**/spotless/copyright.xml",
-                    "**/.idea/**/*.xml",
-                ),
-                licenseHeaderFile = rootProject.file("spotless/copyright.xml").takeIf(File::exists),
+                excludeTargets =
+                    setOf(
+                        "**/build/**/*.xml",
+                        "**/spotless/copyright.xml",
+                        "**/.idea/**/*.xml",
+                    ),
+                licenseHeaderFile =
+                    rootProject
+                        .file("spotless/copyright.xml")
+                        .takeIf(File::exists),
                 licenseHeaderConfig = {
                     updateYearWithLatest(true)
                     yearSeparator("-")
@@ -47,21 +51,23 @@ allprojects {
 
         kotlin(
             editorConfigPath = "${rootProject.rootDir}/.editorconfig",
-            editorConfigOverride = mapOf(
-                "ktlint_standard_argument-list-wrapping" to "disabled",
-                "ktlint_standard_filename" to "disabled",
-                "ktlint_standard_no-wildcard-imports" to "disabled",
-                "ktlint_function_naming_ignore_when_annotated_with" to "Composable",
-                "ij_kotlin_allow_trailing_comma" to "true",
-                "ij_kotlin_allow_trailing_comma_on_call_site" to "true",
-                "ktlint_standard_argument-list-wrapping" to "disabled",
-                "ktlint_standard_filename" to "disabled",
-            ),
-            licenseHeaderFile = if (genCopyright) {
-                rootProject.file("spotless/copyright.kt").takeIf(File::exists)
-            } else {
-                null
-            },
+            editorConfigOverride =
+                mapOf(
+                    "ktlint_standard_argument-list-wrapping" to "disabled",
+                    "ktlint_standard_filename" to "disabled",
+                    "ktlint_standard_no-wildcard-imports" to "disabled",
+                    "ktlint_function_naming_ignore_when_annotated_with" to "Composable",
+                    "ij_kotlin_allow_trailing_comma" to "true",
+                    "ij_kotlin_allow_trailing_comma_on_call_site" to "true",
+                    "ktlint_standard_argument-list-wrapping" to "disabled",
+                    "ktlint_standard_filename" to "disabled",
+                ),
+            licenseHeaderFile =
+                if (genCopyright) {
+                    rootProject.file("spotless/copyright.kt").takeIf(File::exists)
+                } else {
+                    null
+                },
             excludeTargets = listOf("**/spotless/copyright.kt", "*.kts"),
             licenseHeaderConfig = {
                 updateYearWithLatest(true)
@@ -71,15 +77,16 @@ allprojects {
         )
         kotlinGradle(
             editorConfigPath = "${rootProject.rootDir}/.editorconfig",
-            editorConfigOverride = mapOf(
-                "ktlint_standard_argument-list-wrapping" to "disabled",
-                "ktlint_standard_filename" to "disabled",
-                "ktlint_standard_no-wildcard-imports" to "disabled",
-                "ij_kotlin_allow_trailing_comma" to "true",
-                "ij_kotlin_allow_trailing_comma_on_call_site" to "true",
-                "ktlint_standard_argument-list-wrapping" to "disabled",
-                "ktlint_standard_filename" to "disabled",
-            ),
+            editorConfigOverride =
+                mapOf(
+                    "ktlint_standard_argument-list-wrapping" to "disabled",
+                    "ktlint_standard_filename" to "disabled",
+                    "ktlint_standard_no-wildcard-imports" to "disabled",
+                    "ij_kotlin_allow_trailing_comma" to "true",
+                    "ij_kotlin_allow_trailing_comma_on_call_site" to "true",
+                    "ktlint_standard_argument-list-wrapping" to "disabled",
+                    "ktlint_standard_filename" to "disabled",
+                ),
             ktlintVersion = ktlintVersion,
         )
     }
