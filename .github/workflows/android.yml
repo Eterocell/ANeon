@@ -30,6 +30,12 @@ jobs:
         with:
           min-wrapper-count: 1
           allow-snapshots: false
+      - name: Setup ninja
+        uses: seanmiddleditch/gha-setup-ninja@v6
+      - name: Setup cmake
+        uses: jwlawson/actions-setup-cmake@v2
+        with:
+          cmake-version: '3.31.5'
       - name: Spotless check
         run: ./gradlew spotlessCheck
       - name: Build debug apk with Gradle
