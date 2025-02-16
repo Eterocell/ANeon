@@ -15,7 +15,7 @@ junit = "4.13.2"
 androidx-test-ext-junit = "1.2.1"
 espresso-core = "3.6.1"
 
-arrow = "2.0.0"
+arrow = "2.0.1"
 
 spotless = "7.0.2"
 
