@@ -7,16 +7,16 @@
     "automergeType": "pr",
     "automergeStrategy": "squash",
     "extends": [
-        "config:base"
+        "config:recommended"
     ],
     "packageRules": [
         {
-            "matchPackagePatterns": [
-                "^org.jetbrains.kotlin",
-                "^com.google.devtools.ksp",
-                "^androidx.compose.compiler"
-            ],
-            "groupName": "kotlin with dependency constraints (ksp, compose compiler)"
+            "groupName": "kotlin with dependency constraints (ksp, compose compiler)",
+            "matchPackageNames": [
+                "/^org.jetbrains.kotlin/",
+                "/^com.google.devtools.ksp/",
+                "/^androidx.compose.compiler/"
+            ]
         }
     ]
 }
