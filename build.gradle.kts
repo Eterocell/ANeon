@@ -50,7 +50,6 @@ tasks.withType<DependencyUpdatesTask> {
 versionCatalogUpdate {
     sortByKey = true
     keep {
-        keepUnusedLibraries = true
-        keepUnusedPlugins = true
+        keepUnusedVersions = true
     }
 }
