@@ -11,7 +11,7 @@ junit = "4.13.2"
 kotlin = "2.1.21"
 kotlinx-coroutines = "1.10.2"
 ksp = "2.1.21-2.0.1"
-lifecycle-runtime-ktx = "2.9.0"
+lifecycle-runtime-ktx = "2.9.1"
 spotless = "7.0.4"
 version-catalog-update = "1.0.0"
 
