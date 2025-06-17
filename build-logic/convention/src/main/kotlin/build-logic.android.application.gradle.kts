@@ -9,7 +9,7 @@ plugins {
 configureAndroidApplication {
     defaultConfig {
         applicationId = extra["aneon.project.group"].toString()
-        targetSdk = 35
+        targetSdk = 36
 
         versionCode = extra["aneon.project.version.code"].toString().toInt()
         versionName = extra["aneon.project.version.name"].toString()
