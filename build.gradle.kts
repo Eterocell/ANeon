@@ -1,6 +1,8 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
 plugins {
+    alias(libs.plugins.build.logic.root.project)
+
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.kotlin.android) apply false
@@ -9,8 +11,6 @@ plugins {
 
     alias(libs.plugins.gradle.versions)
     alias(libs.plugins.version.catalog.update)
-
-    id("build-logic.root-project")
 }
 
 tasks.named("clean") {
