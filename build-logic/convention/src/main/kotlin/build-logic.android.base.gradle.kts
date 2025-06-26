@@ -1,6 +1,5 @@
 import com.eterocell.gradle.dsl.configureAndroidCommon
 import com.eterocell.gradle.dsl.libs
-import gradle.kotlin.dsl.accessors._8d2461a2f5612be46a1501c2fc5a80cd.coreLibraryDesugaring
 
 plugins {
     id("com.android.base")
@@ -22,7 +21,7 @@ configureAndroidCommon {
 }
 
 dependencies {
-    coreLibraryDesugaring(libs.findLibrary("android-desugar-jdk-libs").get())
+    add("coreLibraryDesugaring", libs.findLibrary("android-desugar-jdk-libs").get())
 }
 
 val Project.androidNamespace
