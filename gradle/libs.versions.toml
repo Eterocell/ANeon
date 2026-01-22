@@ -1,7 +1,7 @@
 [versions]
 aboutlibraries = "13.2.1"
 accompanist = "0.37.3"
-agp = "8.13.2"
+agp = "9.0.0"
 android-desugar-jdk-libs = "2.1.5"
 androidx-activity = "1.12.2"
 androidx-annotation = "1.9.1"
@@ -344,6 +344,7 @@ okhttp = [
 aboutlibraries = { id = "com.mikepenz.aboutlibraries.plugin", version.ref = "aboutlibraries" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+android-lint = { id = "com.android.lint", version.ref = "agp" }
 android-test = { id = "com.android.test", version.ref = "agp" }
 androidx-baseline-profile = { id = "androidx.baselineprofile", version.ref = "androidx-benchmark" }
 androidx-benchmark = { id = "androidx.benchmark", version.ref = "androidx-benchmark" }

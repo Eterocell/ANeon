@@ -3,14 +3,12 @@ package com.eterocell.gradle.dsl
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.dsl.DynamicFeatureExtension
-import com.android.build.gradle.BaseExtension
-import com.android.build.gradle.LibraryExtension
+import com.android.build.api.dsl.LibraryExtension
+import org.gradle.api.Action
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.tasks.bundling.Jar
 import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.get
-import org.gradle.kotlin.dsl.register
+import org.gradle.kotlin.dsl.getByType
 
 fun Project.withAndroidApplication(block: Plugin<in Any>.() -> Unit) =
     plugins.withId("com.android.application", block)
@@ -27,8 +25,17 @@ fun Project.withAndroid(block: Plugin<in Any>.() -> Unit) {
     withAndroidDynamicFeature(block)
 }
 
-fun Project.configureAndroidCommon(block: CommonExtension<*, *, *, *, *, *>.() -> Unit) =
-    withAndroid { configure("android", block) }
+fun Project.configureAndroidCommon(action: Action<CommonExtension>) {
+    withAndroidApplication {
+        action.execute(extensions.getByType<ApplicationExtension>())
+    }
+    withAndroidLibrary {
+        action.execute(extensions.getByType<LibraryExtension>())
+    }
+    withAndroidDynamicFeature {
+        action.execute(extensions.getByType<DynamicFeatureExtension>())
+    }
+}
 
 fun Project.configureAndroidApplication(block: ApplicationExtension.() -> Unit) =
     withAndroidApplication { extensions.configure(block) }
@@ -39,18 +46,9 @@ fun Project.configureAndroidLibrary(block: LibraryExtension.() -> Unit) =
 fun Project.configureAndroidDynamicFeatures(block: DynamicFeatureExtension.() -> Unit) =
     withAndroidDynamicFeature { extensions.configure(block) }
 
-fun Project.withBuildType(buildType: String, block: () -> Unit) {
+fun Project.withBuildType(
+    buildType: String,
+    block: () -> Unit,
+) {
     if (taskRequestContains(buildType)) block()
-}
-
-fun Project.withAndroidSourcesJar() {
-    configure<BaseExtension> {
-        tasks.register<Jar>("androidSourcesJar") {
-            archiveClassifier.set("sources")
-            from(
-                sourceSets["main"].java.srcDirs,
-                "src/main/kotlin",
-            )
-        }
-    }
 }

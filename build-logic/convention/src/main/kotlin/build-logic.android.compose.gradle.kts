@@ -5,8 +5,6 @@ plugins {
 }
 
 configureAndroidCommon {
-    defaultConfig.vectorDrawables { useSupportLibrary = true }
-    buildFeatures {
-        compose = true
-    }
+    defaultConfig.vectorDrawables.apply { useSupportLibrary = true }
+    buildFeatures.compose = true
 }

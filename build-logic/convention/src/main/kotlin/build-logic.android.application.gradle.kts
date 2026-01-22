@@ -8,11 +8,17 @@ plugins {
 
 configureAndroidApplication {
     defaultConfig {
-        applicationId = extra["aneon.project.group"].toString()
+        applicationId =
+            findProperty("aneon.project.group")?.toString()
+                ?: error("Property 'aneon.project.group' not found in gradle.properties")
         targetSdk = 36
 
-        versionCode = extra["aneon.project.version.code"].toString().toInt()
-        versionName = extra["aneon.project.version.name"].toString()
+        versionCode =
+            findProperty("aneon.project.version.code")?.toString()?.toInt()
+                ?: error("Property 'aneon.project.version.code' not found in gradle.properties")
+        versionName =
+            findProperty("aneon.project.version.name")?.toString()
+                ?: error("Property 'aneon.project.version.name' not found in gradle.properties")
     }
 }
 
