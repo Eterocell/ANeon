@@ -1,11 +1,5 @@
-import com.android.build.api.dsl.ApplicationExtension
-import com.android.build.api.dsl.CommonExtension
-import com.android.build.api.dsl.LibraryExtension
 import com.eterocell.gradle.dsl.configureAndroidCommon
 import com.eterocell.gradle.dsl.libs
-import com.eterocell.gradle.dsl.withAndroidApplication
-import com.eterocell.gradle.dsl.withAndroidLibrary
-import org.gradle.kotlin.dsl.configure
 
 plugins {
     id("com.android.base")

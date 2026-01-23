@@ -1,5 +1,12 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
+buildscript {
+    dependencies {
+        classpath(libs.gradle.plugin.kotlin)
+        classpath(libs.gradle.plugin.ksp)
+    }
+}
+
 plugins {
     alias(libs.plugins.build.logic.root.project)
 
