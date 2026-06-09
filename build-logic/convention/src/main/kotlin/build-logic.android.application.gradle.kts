@@ -11,7 +11,7 @@ configureAndroidApplication {
         applicationId =
             findProperty("aneon.project.group")?.toString()
                 ?: error("Property 'aneon.project.group' not found in gradle.properties")
-        targetSdk = 36
+        targetSdk = 37
 
         versionCode =
             findProperty("aneon.project.version.code")?.toString()?.toInt()
