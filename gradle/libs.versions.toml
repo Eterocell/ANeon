@@ -90,7 +90,7 @@ ktlint = "1.8.0"
 ktor = "3.5.1"
 leakcanary = "2.14"
 okhttp = "5.4.0"
-okio = "3.18.0"
+okio = "3.18.1"
 retrofit = "3.0.0"
 robolectric = "4.16.1"
 spotless = "8.9.0"
@@ -365,7 +365,7 @@ dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebase-crashlytics-plugin" }
 firebase-perf = { id = "com.google.firebase.firebase-perf", version.ref = "firebase-perf-plugin" }
 google-services = { id = "com.google.gms.google-services", version.ref = "gms" }
-gradle-versions = { id = "com.github.ben-manes.versions", version.ref = "gradle-versions" }
+gradle-versions = { id = "io.github.ben-manes.versions", version.ref = "gradle-versions" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
